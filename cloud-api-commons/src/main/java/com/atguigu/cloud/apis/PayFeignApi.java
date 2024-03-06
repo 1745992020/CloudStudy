@@ -16,7 +16,7 @@ public interface PayFeignApi {
      * @return
      */
     @PostMapping("/pay/add")
-    public ResultData addPay(@RequestBody PayDTO payDTO);
+    ResultData addPay(@RequestBody PayDTO payDTO);
 
     /**
      * 按照主键记录查询支付流水信息
@@ -24,12 +24,35 @@ public interface PayFeignApi {
      * @return
      */
     @GetMapping("/pay/get/{id}")
-    public ResultData getPayInfo(@PathVariable("id") Integer id);
+    ResultData getPayInfo(@PathVariable("id") Integer id);
 
     /**
      * openfeign天然支持负载均衡演示
      * @return
      */
     @GetMapping(value = "/pay/get/info")
-    public String mylb();
+    String mylb();
+
+    /**
+     * 服务熔断测试
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/pay/circuit/{id}")
+    String myCircuit(@PathVariable("id") Integer id);
+    /**
+     * Resilience4j Bulkhead 的例子
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/pay/bulkhead/{id}")
+    public String myBulkhead(@PathVariable("id") Integer id);
+
+    /**
+     * Resilience4j Ratelimit 的例子
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/pay/ratelimit/{id}")
+    public String myRatelimit(@PathVariable("id") Integer id);
 }

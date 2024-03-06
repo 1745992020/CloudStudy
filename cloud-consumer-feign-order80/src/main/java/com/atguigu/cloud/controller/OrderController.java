@@ -7,7 +7,6 @@ import com.atguigu.cloud.resp.ResultData;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("feign/pay")
