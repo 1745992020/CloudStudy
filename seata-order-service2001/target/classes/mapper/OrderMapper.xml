@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.cloud.mapper.OrderMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+       insert into t_order values (null,#{userId},#{productId},#{count},${money},#{status});
+    </insert>
+    <update id="updateById">
+        update t_order set user_id=#{userId},product_id=#{productId},count=#{count},money=#{money},status=#{status}
+        where id = #{id};
+    </update>
+    <select id="selectOne" resultType="com.atguigu.cloud.entities.Order">
+        select * from t_order where id = #{id};
+    </select>
+</mapper>
